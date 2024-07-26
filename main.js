@@ -29,7 +29,7 @@ app.get("/images", (req, res) => {
   });
 });
 
-// stream logs from container - not properly functional till now
+// stream logs from container - not properly functional till now. pending work
 app.get("/containers/:id/logs", (req, res) => {
   const containerId = req.params.id;
   var container = docker.getContainer(containerId);
