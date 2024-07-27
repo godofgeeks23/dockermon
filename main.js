@@ -41,7 +41,7 @@ app.get("/containers/:id/logs", (req, res) => {
           .status(500)
           .send({ message: "Error fetching container logs" });
       }
-      res.setHeader("Content-Type", "text/plain");
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
       res.setHeader("Transfer-Encoding", "chunked");
       stream.setEncoding("utf8");
       stream.on("data", function (chunk) {
@@ -53,6 +53,18 @@ app.get("/containers/:id/logs", (req, res) => {
       });
     }
   );
+});
+
+app.get("/teststream", (req, res) => {
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Transfer-Encoding", "chunked");
+  res.write("hello\n");
+  setTimeout(() => {
+    res.write("world\n");
+    setTimeout(() => {
+      res.end("end\n");
+    }, 1000);
+  }, 1000);
 });
 
 app.listen(port, () => {
