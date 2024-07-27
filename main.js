@@ -55,6 +55,7 @@ app.get("/containers/:id/logs", (req, res) => {
   );
 });
 
+// api to test stream
 app.get("/teststream", (req, res) => {
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Transfer-Encoding", "chunked");
