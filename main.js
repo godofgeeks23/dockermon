@@ -68,6 +68,7 @@ app.get("/containers/:id/logs", (req, res) => {
   );
 });
 
+// start container
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
